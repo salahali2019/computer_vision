@@ -5,6 +5,7 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 from skimage.util import img_as_ubyte
+from PIL import Image
 
 
 ## paths to the images 
