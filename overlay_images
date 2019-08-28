@@ -58,6 +58,18 @@ def merge_image_mask_ground_truth(image,predicted,ground_truth):
     alphaBlended1 = Image.blend(image_pil_RGBA, mask_pil_RGBA, alpha=.3)
     return np.array(alphaBlended1)
     
+ def combine_histogram(image, ground_truth, classe_names,class_vlues, color_list):
+    #classe_names=['pore','bread']
+# class_vlues=[0,255]
+# color_list=['g','r']
+# plt.figure(figsize = (10,10))
+    alpa_value=0.3
+    for i in range(len(class_vlues)):
+        classe_image=(ground_truth==class_vlues[i])*image
+        plt.hist(classe_image.flatten(),image.shape[0]+1,[1,256],color=color_list[i],alpha=alpa_value,label=classe_names[i])
+        alpa_value+=0.1
+    plt.legend(loc='upper right')
     
+
  plt.imshow(merge_image_mask_ground_truth(image,image_segmented,ground_truth))
  
